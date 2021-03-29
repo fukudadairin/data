@@ -1,0 +1,281 @@
+@charset "utf-8";
+@import "bese/reset";
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    // background: ;
+}
+
+.container {
+    width: 330px;
+    background: rgb(232, 232, 232);
+    border-radius: 5px;
+    text-align: center;
+    padding: 50px 20px 10px;
+
+    header {
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .progress-bar {
+        display: flex;
+        margin: 40px 0;
+
+        .step {
+            position: relative;
+            text-align: center;
+            width: 100%;
+
+            > p {
+                font-size: 12px;
+                color: #000;
+                margin-bottom: 8px;
+                transition: .3s;
+            }
+
+            > p.active {
+                color: #d43f8d;
+            }
+
+            &:last-child {
+                .bullet {
+                    &::before,
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+
+            .bullet {
+                position: relative;
+                height: 25px;
+                width: 25px;
+                border: 2px solid #000;
+                display: inline-block;
+                border-radius: 50%;
+                transition: 0.3s;
+
+                &::before,
+                &::after {
+                    position: absolute;
+                    bottom: 9px;
+                    right: -28px;
+                    content: "";
+                    height: 3px;
+                    width: 20px;
+                    background: #262626;
+                }
+
+
+                &::after {
+                    border-color: #d43f8d;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    animation: animate 0.3s linear forwards;
+                }
+                @keyframes animate {
+                    100% {
+                        transform: scaleX(1);
+                    }
+                }
+
+
+            }
+
+
+            .bullet.active {
+                border-color: #d43f8d;
+                background: #d43f8d;
+                
+                &::after {
+                    background: #d43f8d;
+                    transform: scaleX(0);
+                    transform-origin: left;
+                    animation: animate 0.3s linear forwards;
+                }
+
+                @keyframes animate {
+                    100% {
+                        transform: scaleX(1);
+                    }
+                }
+
+                span {
+                    display: none;
+                 }
+           
+            }
+
+            span {
+                font-size: 17px;
+                line-height: 22px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                
+            }
+
+            .check {
+                position: absolute;
+                left: 50%;
+                top: 72%;
+                font-size: 15px;
+                transform: translate(-50%, -50%);
+                display: none;
+            }
+
+            .check.active {
+                display: block;
+                color: #fff;
+            }
+            
+        }
+    }
+}
+
+.container .form-outer {
+    width: 100%;
+    overflow: hidden;
+
+    form {
+        display: flex;
+        width: 500%;
+
+        .page {
+            width: 25%;
+            transition: margin-left 0.3s ease-in-out;
+
+            .title {
+                text-align: center;
+                font-size: 25px;
+                font-weight: 500;
+            }
+
+            .field {
+                height: 45px;
+                width: 100%;
+                margin: 45px 0;
+                display: block;
+                position: relative;
+
+                .label {
+                    position: absolute;
+                    top: -25px;
+                    left: 40px;
+                    font-weight: 500;
+                }
+
+                input {
+                    height: 100%;
+                    width: 77%;
+                    border: 1px solid lightgray;
+                    border-radius: 5px;
+                    font-size: 18px;
+                    padding-left: 15px;
+                }
+
+                button {
+                    width: 35%;
+                    margin: 0 auto;
+                    height: calc(100% + 5px);
+                    margin-top: -20px;
+                    border: none;
+                    background: #d43f8d;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: 0.3s ease;
+
+                    &:hover {
+                        background: #000;
+                    }
+                }
+
+                .firstButton {
+                    width: 80%;
+                    margin: 0 auto;
+                    height: calc(100% + 5px);
+                    margin-top: -20px;
+                    border: none;
+                    background: #d43f8d;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-size: 18px;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                    transition: 0.3s ease;
+
+                    &:hover {
+                        background: #000;
+                    }
+                }
+            }
+
+            .btns{ 
+                
+                // .smtBtn{
+                  
+                // }
+                
+                button {
+                margin-top: -20px;
+                }
+            }
+        }
+    }
+}
+
+form .page .btns button.prev {
+    margin-right: 3px;
+    font-size: 17px;
+}
+
+form .page .btns button.next {
+    margin-right: 3px;
+    font-size: 17px;
+}
+
+form .page .field select {
+    width: 77%;
+    height: 35px;
+    margin: 0 auto;
+    padding-left: 10px;
+    font-size: 17px;
+}
+
+.checklist{
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 19px;
+    padding-left: 15px;
+    background-color: #fff;
+    
+
+}
+
+.checklistBtn{
+    height: 45px;
+    border-color: #d43f8d;
+    background-color: #d43f8d;
+    color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+}
